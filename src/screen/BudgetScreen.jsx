@@ -4,12 +4,14 @@ import { ContextBudget } from '../component/ContextApp'
 const BudgetScreen = () => {
     const {budget,setBudget,remainingBudget,setRemainingBudget,spentBudget,setSpentBudget}=useContext(ContextBudget)
     const [expenses,setExpenses]=useState([]);
-    const [productName,setProductName]=useState()
-    const [productCost,setProductCost]=useState()
+    const [productName,setProductName]=useState("")
+    const [productCost,setProductCost]=useState("")
     const paraRef=useRef()
 
     const updateData=()=>{
-        if(remainingBudget>0 && productCost<=remainingBudget){
+        if(productCost==="" || productName===""){
+            alert("please add name and cost")
+        }else if(remainingBudget>0 && productCost<=remainingBudget){
             paraRef.current.style.display="none"
             const tempdata={
                 name:productName,
@@ -20,13 +22,13 @@ const BudgetScreen = () => {
     
             setRemainingBudget(remainingBudget-productCost)
             setSpentBudget(pre=>pre+productCost)
-            setProductName()
-            setProductCost()
-        }else if(!productCost && !productName){
-            alert("please add name and cost")
+           
         }else{
             alert("You are going out of budget")
         }
+
+        setProductName("")
+        setProductCost("")
 
     }
     const deleteItem=(index)=>{
