@@ -44,7 +44,7 @@ const BudgetScreen = () => {
         }
     }
   return (
-    <div>
+    <div className='px-10 pt-5'>
       <div>
         <h1 className='text-5xl font-semibold text-center'>My Budget Planner</h1>
         <div className='flex justify-around text-xl font-semibold py-10'>
@@ -56,7 +56,7 @@ const BudgetScreen = () => {
       <div>
         <h1 className='text-3xl text-start font-semibold py-5'>Expenses</h1>
         <div ref={paraRef}>
-         <p className='text-3xl text-green-500'>Add Data To List . . . . .</p>
+         <p className='text-3xl font-semibold text-green-600 text-center'>Add Data To List . . . . .</p>
         </div>
         <div className=' px-20 flex flex-col gap-5 py-10'>
             {expenses && expenses.map((item,index)=>{
